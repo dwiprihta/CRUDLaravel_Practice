@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route Modul data mahasiswa
+
+Route::get('/mahasiswas','MahasiswasController@index')->name('mahasiswas.index');
+Route::get('/mahasiswas/create', 'MahasiswasController@create')->name('mahasiswas.create');
+Route::post('/mahasiswas','MahasiswasController@store')->name('mahasiswas.store');
+Route::get('/mahasiswas/{mahasiswa}','MahasiswasController@show')->name('mahasiswas.show');
+
