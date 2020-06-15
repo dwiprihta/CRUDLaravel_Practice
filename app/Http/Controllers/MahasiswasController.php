@@ -26,13 +26,15 @@ class MahasiswasController extends Controller
     //proccess add
     public function store(Request $request){
         $validateData=$request->validate([
-            'nim'=>'required|size:10',
+            'nim'=>'required|size:10|unique:mahasiswas',
             'nama'=>'required',
             'jenis_kelamin'=>'required|in:P,L',
             'jurusan'=>'required',
             'alamat'=>'',
         ]);
         Mahasiswa::create($validateData);
-        return 'data mahasiswaa berhasil diinput';
+
+        $request->session()->flash('notif',"Data berhasil {$validateData['nama']} ditambahkan");
+        return redirect()->route('mahasiswas.index');
     }
 }

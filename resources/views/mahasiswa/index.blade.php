@@ -19,6 +19,12 @@
                  <h5 class="card-title mr-auto">PENDAFTARAN MAHASISWA</h5>
                  <a class="btn btn-primary" href="{{ route('mahasiswas.create') }}">Tambah Mahasiswas</a>
             </div>
+                @if (session()->has('notif'))
+                <div class="alert alert-success">
+                    {{ session()->get('notif') }}
+                </div>
+                @endif
+
                  <table class="table table-hover">
                     <thead>
                         <tr>
