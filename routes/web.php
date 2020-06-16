@@ -17,10 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route Modul data mahasiswa
+/*
+|--------------------------------------------------------------------------
+| ROUTE MAHASISWA
+|--------------------------------------------------------------------------
+*/
 
+//get data mahasiswa
 Route::get('/mahasiswas','MahasiswasController@index')->name('mahasiswas.index');
+//insert
 Route::get('/mahasiswas/create', 'MahasiswasController@create')->name('mahasiswas.create');
 Route::post('/mahasiswas','MahasiswasController@store')->name('mahasiswas.store');
+//detil
 Route::get('/mahasiswas/{mahasiswa}','MahasiswasController@show')->name('mahasiswas.show');
+//update
+Route::get('/mahasiswas/{mahasiswa}/edit','MahasiswasController@edit')->name('mahasiswas.edit');
+Route::patch('/mahasiswas/{mahasiswa}','MahasiswasController@update')->name('mahasiswas.update');
 

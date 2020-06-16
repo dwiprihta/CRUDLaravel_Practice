@@ -37,4 +37,15 @@ class MahasiswasController extends Controller
         $request->session()->flash('notif',"Data berhasil {$validateData['nama']} ditambahkan");
         return redirect()->route('mahasiswas.index');
     }
+
+    //show for edited
+    public function edit(Mahasiswa $mahasiswa){
+        return view('mahasiswa.edit',['mahasiswa'=>$mahasiswa]);
+    }
+
+    //PROSES UPDATE
+    public function update(Request $request, Mahasiswa $mahasiswa){
+        dump($request->all());
+        dump($mahasiswa);
+    }
 }
