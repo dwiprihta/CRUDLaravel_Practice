@@ -71,7 +71,7 @@
                         </div>
 
                         <hr>
-                        <button type="submit" class="btn btn-primary center-block">Daftar</button>
+                        <button type="submit" class="btn btn-primary center-block">Simpan</button>
                  </form>
             </div>
         </div>

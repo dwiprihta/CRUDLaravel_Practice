@@ -45,7 +45,17 @@ class MahasiswasController extends Controller
 
     //PROSES UPDATE
     public function update(Request $request, Mahasiswa $mahasiswa){
-        dump($request->all());
-        dump($mahasiswa);
+        $validateData=$request->validate([
+            'nim'=>'required|size:10|unique:mahasiswas,nim,'.$mahasiswa->id,
+            'nama'=>'required',
+            'jenis_kelamin'=>'required|in:P,L',
+            'jurusan'=>'required',
+            'alamat'=>'',
+        ]);
+        //Mahasiswa::where('id', $mahasiswa->id)->update($validateData);
+        $mahasiswa->update($validateData);
+
+        $request->session()->flash('notif',"Data berhasil {$validateData['nama']} diubah");
+        return redirect()->route('mahasiswas.index', ['mahasiswa'=>$mahasiswa->id]);
     }
 }
