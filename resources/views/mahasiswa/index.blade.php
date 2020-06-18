@@ -46,7 +46,13 @@
                             <td>{{ $mahasiswa->jenis_kelamin == 'P' ? 'Perempuan':'Laki-Laki'}}</td>
                             <td>{{ $mahasiswa->jurusan }}</td>
                             <td>{{ $mahasiswa->alamat == '' ? 'N/A':$mahasiswa->alamat}}</td>
-                            <td><a class="btn btn-sm btn-info" href="{{route('mahasiswas.edit',['mahasiswa'=>$mahasiswa->id])}}"/>Edit</a> </td>
+                            <td><a class="btn btn-sm btn-info" href="{{route('mahasiswas.edit',['mahasiswa'=>$mahasiswa->id])}}"/>Edit</a> 
+                           <form action="{{ route('mahasiswas.destroy',['mahasiswa'=>$mahasiswa->id])}}" method="POST">
+                               @method('DELETE')
+                               @csrf    
+                                <button type="submit" class="btn btn-sm btn-danger">Del</button>
+                           </form>
+                            </td>
                         </tr>
                         @empty
                         <td><div class="alert alert-primary" role="alert">Data ini masih kosong</div></td>

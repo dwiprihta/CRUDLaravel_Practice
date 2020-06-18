@@ -58,4 +58,11 @@ class MahasiswasController extends Controller
         $request->session()->flash('notif',"Data berhasil {$validateData['nama']} diubah");
         return redirect()->route('mahasiswas.index', ['mahasiswa'=>$mahasiswa->id]);
     }
+
+    //PROSES UPDATE
+    public function destroy(Mahasiswa $mahasiswa){
+       
+        $mahasiswa->delete();
+        return redirect()->route('mahasiswas.index')->with('notif',"Hapus data $mahasiswa->nama berhasil");
+    }
 }

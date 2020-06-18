@@ -24,13 +24,13 @@ Route::get('/', function () {
 */
 
 //get data mahasiswa
-Route::get('/mahasiswas','MahasiswasController@index')->name('mahasiswas.index');
-//insert
-Route::get('/mahasiswas/create', 'MahasiswasController@create')->name('mahasiswas.create');
-Route::post('/mahasiswas','MahasiswasController@store')->name('mahasiswas.store');
-//detil
-Route::get('/mahasiswas/{mahasiswa}','MahasiswasController@show')->name('mahasiswas.show');
-//update
-Route::get('/mahasiswas/{mahasiswa}/edit','MahasiswasController@edit')->name('mahasiswas.edit');
-Route::patch('/mahasiswas/{mahasiswa}','MahasiswasController@update')->name('mahasiswas.update');
+// Route::get('/mahasiswas','MahasiswasController@index')->name('mahasiswas.index');
+// Route::get('/mahasiswas/create', 'MahasiswasController@create')->name('mahasiswas.create');
+// Route::post('/mahasiswas','MahasiswasController@store')->name('mahasiswas.store');
+// Route::get('/mahasiswas/{mahasiswa}','MahasiswasController@show')->name('mahasiswas.show');
+// Route::get('/mahasiswas/{mahasiswa}/edit','MahasiswasController@edit')->name('mahasiswas.edit');
+// Route::patch('/mahasiswas/{mahasiswa}','MahasiswasController@update')->name('mahasiswas.update');
+// Route::delete('/mahasiswas/{mahasiswa}','MahasiswasController@destroy')->name('mahasiswas.destroy');
+
+route::resource('mahasiswas','MahasiswasController');
 
