@@ -34,3 +34,8 @@ Route::get('/', function () {
 
 route::resource('mahasiswas','MahasiswasController');
 
+//upload foto
+route::get('/file-upload','fileUploadController@fileUpload');
+route::post('/file-upload','fileUploadController@prosesFileUpload');
+
+
