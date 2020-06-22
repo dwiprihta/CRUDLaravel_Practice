@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +37,15 @@ route::resource('mahasiswas','MahasiswasController');
 //upload foto
 route::get('/file-upload','fileUploadController@fileUpload');
 route::post('/file-upload','fileUploadController@prosesFileUpload');
+
+Route::get('/daftar-mahasiswa', 'MahasiswasController@daftarMahasiswa');
+Route::get('/tabel-mahasiswa', 'MahasiswasController@tabelMahasiswa');
+Route::get('/blog-mahasiswa', 'MahasiswasController@blogMahasiswa');
+
+Route::get('/', 'SessionController@index');
+Route::get('/buat-session', 'SessionController@buatSession');
+Route::get('/akses-session', 'SessionController@aksesSession');
+Route::get('/hapus-session', 'SessionController@hapusSession');
+Route::get('/flash-session', 'SessionController@flashSession');
 
 

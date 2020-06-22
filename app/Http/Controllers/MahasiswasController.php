@@ -7,6 +7,10 @@ use App\Mahasiswa;
 
 class MahasiswasController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('coba')->only('daftarMahasiswa');
+    }
     //show mahasiswas
     public function index(){
         $mahasiswas=Mahasiswa::get()->all();
@@ -65,4 +69,20 @@ class MahasiswasController extends Controller
         $mahasiswa->delete();
         return redirect()->route('mahasiswas.index')->with('notif',"Hapus data $mahasiswa->nama berhasil");
     }
-}
+
+    public function daftarMahasiswa()
+    {
+    return 'Form pendaftaran mahasiswa';
+    }
+
+    public function tabelMahasiswa()
+    {
+    return 'Tabel data mahasiswa';
+    }
+
+    public function blogMahasiswa()
+    {
+    return 'Halaman blog mahasiswa';
+    }
+ }
+
