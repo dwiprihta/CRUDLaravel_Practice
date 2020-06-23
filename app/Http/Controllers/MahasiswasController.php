@@ -9,7 +9,7 @@ class MahasiswasController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('coba')->only('daftarMahasiswa');
+        //$this->middleware('coba')->only('daftarMahasiswa');
     }
     //show mahasiswas
     public function index(){
@@ -65,24 +65,46 @@ class MahasiswasController extends Controller
 
     //PROSES UPDATE
     public function destroy(Mahasiswa $mahasiswa){
-       
         $mahasiswa->delete();
         return redirect()->route('mahasiswas.index')->with('notif',"Hapus data $mahasiswa->nama berhasil");
     }
 
     public function daftarMahasiswa()
     {
-    return 'Form pendaftaran mahasiswa';
+    return view('halaman',['judul'=>'DAFTAR MAHASISWA']);
     }
 
     public function tabelMahasiswa()
     {
-    return 'Tabel data mahasiswa';
+        return view('halaman',['judul'=>'TABEL MAHASISWA']);
     }
 
     public function blogMahasiswa()
     {
-    return 'Halaman blog mahasiswa';
+    return view('halaman',['judul'=>'BLOG MAHASISWA']);
+    }
+
+    public function login(){
+        return view('form-login');
+    }
+
+    public function prosesLogin(Request $request){
+        $request->validate([
+            'username'=>'required',
+        ]);
+
+        $validUsername =['andi','rani','lisa','dwi erna'];
+        if(in_array($request->username, $validUsername)){
+            session (['username'=>$request->username]);
+            return redirect('/daftar-mahasiswa');
+        }else{
+            return back()->withInput()->with('pesan', "username tidak valid");
+        }
+    }
+   
+    public function logout(){
+            session()->forget('username');
+            return redirect('login')->with('pesan','Logout Berhasil');
     }
  }
 

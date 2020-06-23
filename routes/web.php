@@ -38,9 +38,14 @@ route::resource('mahasiswas','MahasiswasController');
 route::get('/file-upload','fileUploadController@fileUpload');
 route::post('/file-upload','fileUploadController@prosesFileUpload');
 
-Route::get('/daftar-mahasiswa', 'MahasiswasController@daftarMahasiswa');
-Route::get('/tabel-mahasiswa', 'MahasiswasController@tabelMahasiswa');
-Route::get('/blog-mahasiswa', 'MahasiswasController@blogMahasiswa');
+Route::get('/login','MahasiswasController@login');
+Route::post('/login','MahasiswasController@prosesLogin');
+Route::get('/logout','MahasiswasController@logout');
+Route::redirect('/','/login');
+
+Route::get('/daftar-mahasiswa', 'MahasiswasController@daftarMahasiswa')->middleware('login');
+Route::get('/tabel-mahasiswa', 'MahasiswasController@tabelMahasiswa')->middleware('login');
+Route::get('/blog-mahasiswa', 'MahasiswasController@blogMahasiswa')->middleware('login');
 
 Route::get('/', 'SessionController@index');
 Route::get('/buat-session', 'SessionController@buatSession');
